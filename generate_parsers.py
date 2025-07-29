@@ -4,7 +4,10 @@ import os
 sites = {
     "WHOParser": "https://www.who.int/",
     "OutbreakNewsParser": "https://outbreaknewstoday.substack.com/",
-    "WHOWeeklyRecordParser": "https://www.who.int/publications/journals/weekly-epidemiological-record",
+    "WHOWeeklyRecordParser": (
+        "https://www.who.int/publications/journals/weekly-"
+        "epidemiological-record"
+    ),
     "RospotrebParser": "https://www.rospotrebnadzor.ru/",
     "FSVPSParser": "https://fsvps.gov.ru/",
     "MCXParser": "https://mcx.gov.ru/",
@@ -17,11 +20,17 @@ sites = {
     "EMROParser": "http://www.emro.who.int/",
     "MMWRParser": "https://www.cdc.gov/mmwr",
     "CDCParser": "https://www.cdc.gov/",
-    "ECDCAtlasParser": "https://www.ecdc.europa.eu/en/data-tools/atlas/Pages/atlas",
+    "ECDCAtlasParser": (
+        "https://www.ecdc.europa.eu/en/data-tools/atlas/"
+        "Pages/atlas"
+    ),
     "EIOSParser": "https://www.who.int/initiatives/eios",
     "GOARNParser": "https://goarn.who.int/",
     "CISIDParser": "https://cisid.euro.who.int/CISID/",
-    "EWARSParser": "https://www.who.int/emergencies/surveillance/early-warning-alert-and-response-system-ewars",
+    "EWARSParser": (
+        "https://www.who.int/emergencies/surveillance/"
+        "early-warning-alert-and-response-system-ewars"
+    ),
     "CIDRAPParser": "http://www.cidrap.umn.edu",
     "HealthMapParser": "http://www.healthmap.org/en",
     "EpiSouthParser": "https://www.episouthnetwork.org/",
@@ -30,7 +39,10 @@ sites = {
     "AfricaCDCParser": "https://africacdc.org/",
     "EDPLNParser": "https://www.who.int/groups/edpln",
     "PandemicHubParser": "https://pandemichub.who.int/",
-    "ReliefWebParser": "https://reliefweb.int/disasters?search=&sl=environment-disaster_listing",
+    "ReliefWebParser": (
+        "https://reliefweb.int/disasters?search=&sl="
+        "environment-disaster_listing"
+    ),
     "MelioidosisParser": "https://www.melioidosis.info/infobox.aspx"
 }
 
@@ -41,8 +53,11 @@ class {classname}(BaseParser):
     URL = "{url}"
 '''
 
+
 def camel_to_snake(name):
-    return ''.join(['_' + c.lower() if c.isupper() else c for c in name]).lstrip('_').replace("parser", "")
+    parts = ['_' + c.lower() if c.isupper() else c for c in name]
+    return ''.join(parts).lstrip('_').replace("parser", "")
+
 
 def generate_parsers():
     os.makedirs("parsers", exist_ok=True)
@@ -65,12 +80,15 @@ def generate_parsers():
             f.write(content)
         print(f"✓ Created: {filepath}")
 
-        import_line = f"from parsers.{filename_prefix}_parser import {classname}"
+        import_line = (
+            f"from parsers.{filename_prefix}_parser import {classname}"
+        )
         site_entry = f'    "{source}": {classname},'
         imports.append(import_line)
         registrations.append(site_entry)
 
     return imports, registrations
+
 
 def write_base_sites(imports, registrations):
     filepath = "parsers/base_sites.py"
@@ -82,7 +100,7 @@ def write_base_sites(imports, registrations):
         f.write("\n}\n")
     print(f"✓ Updated: {filepath}")
 
+
 if __name__ == "__main__":
     imports, registrations = generate_parsers()
     write_base_sites(imports, registrations)
-
