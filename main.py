@@ -1,10 +1,10 @@
 from utils.run_folder import get_next_run_folder, create_readme
 from parsers.base_sites import SITES
 from utils.logger import log_error
-from datetime import datetime
-import time
 import os
 import sys
+import time
+
 
 def run_parser(name, ParserClass, results_dir, success_list):
     readme_path = os.path.join(results_dir, "README.txt")
@@ -27,7 +27,9 @@ def run_parser(name, ParserClass, results_dir, success_list):
         print(f"[X] {name} — ошибка: {short_error}")
         return short_error
 
+
 def parse_unparsed_sites(results_dir, run_name):
+
     print("\n[🔁] Повторный парсинг: только не обработанные сайты")
 
     parsed_names = {
@@ -57,12 +59,15 @@ def parse_unparsed_sites(results_dir, run_name):
         elapsed=None
     )
 
+
 def main():
     resume_mode = "--resume" in sys.argv
 
     if resume_mode:
         base = "results"
-        all_runs = sorted([d for d in os.listdir(base) if d.startswith("run_")])
+        all_runs = sorted(
+            [d for d in os.listdir(base) if d.startswith("run_")]
+        )
         if not all_runs:
             print("[❌] Нет предыдущих запусков для повторной попытки.")
             return
@@ -96,6 +101,7 @@ def main():
         failed=failed,
         elapsed=elapsed
     )
+
 
 if __name__ == "__main__":
     main()

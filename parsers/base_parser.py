@@ -8,15 +8,22 @@ from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
 import os
 
+
 class BaseParser:
     SOURCE = "base"
     URL = None
     HEADLESS = True
     TIMEOUT = 10
 
-    def __init__(self):
+    def __init__(self, results_dir="results"):
+        self.results_dir = results_dir
         self.driver = get_undetected_driver(headless=self.HEADLESS)
-        os.makedirs("results/html", exist_ok=True)
+        os.makedirs(os.path.join(self.results_dir, "html"), exist_ok=True)
+
+    def set_results_dir(self, results_dir):
+        """Allow setting results directory after initialization."""
+        self.results_dir = results_dir
+        os.makedirs(os.path.join(self.results_dir, "html"), exist_ok=True)
 
     def parse(self):
         try:
@@ -44,34 +51,47 @@ class BaseParser:
         finally:
             try:
                 self.driver.quit()
-            except:
+            except Exception:
                 pass
 
     def accept_cookies(self):
         try:
             WebDriverWait(self.driver, 3).until(
-                EC.element_to_be_clickable((By.XPATH, '//button[contains(text(),"Accept")]'))
+                EC.element_to_be_clickable(
+                    (By.XPATH, '//button[contains(text(),"Accept")]')
+                )
             ).click()
-        except:
+        except Exception:
             pass
 
     def extract_text(self):
         return self.driver.find_element(By.TAG_NAME, "body").text
 
     def clean_text(self, text):
-        return "\n".join([line.strip() for line in text.splitlines() if line.strip()])
+        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        return "\n".join(lines)
 
     def save_text(self, translated_text):
         today = datetime.now().strftime("%Y-%m-%d")
         filename = f"{self.SOURCE}_{today}.txt"
-        save_text_file(self.SOURCE, today, translated_text, filename)
+        save_text_file(
+            self.SOURCE,
+            today,
+            translated_text,
+            filename,
+            self.results_dir,
+        )
 
     def save_html_debug(self):
         try:
             html = self.driver.page_source
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            path = f"results/html/{self.SOURCE}_{timestamp}.html"
+            path = os.path.join(
+                self.results_dir,
+                "html",
+                f"{self.SOURCE}_{timestamp}.html",
+            )
             with open(path, "w", encoding="utf-8") as f:
                 f.write(html)
-        except:
+        except Exception:
             pass
