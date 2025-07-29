@@ -1,0 +1,2493 @@
+
+
+
+
+jQuery(document).ready(function(){
+     
+jQuery('.agreesed').click(function(){
+    jQuery(this).toggleClass('active');
+    
+})    
+ 
+jQuery('.reti a').click(function(){
+    jQuery('#viewsa').submit();
+    return false;
+})
+
+
+
+jQuery('.filone.hover .fills').click(function(){
+     jQuery(this).next('.ctnfillnew').toggleClass('active');   
+     return false;
+})
+  jQuery(document).mouseup(function (e){
+         
+     if (!jQuery(".ctnfillnew").is(e.target) &&
+      jQuery(".ctnfillnew").has(e.target).length === 0) {
+      jQuery(".ctnfillnew").removeClass('active'); // скрываем блок
+     }
+  });  
+
+
+ 
+jQuery('.visall').click(function(){
+    
+    jQuery(this).parents('.sas_slide').find('.file_list').removeClass('hidd');
+    jQuery(this).remove();
+    return false;
+})
+
+
+jQuery('.morefile').click(function(){
+    jQuery('.file_one').removeClass('hiddens');   
+      
+    
+    jQuery(this).remove();
+    return false;
+})
+ 
+jQuery('#ddf, #dmf, #dyf,#ddf11, #dmf11, #dyf11,#ddf12, #dmf12, #dyf12').change(function(){
+    validates();
+})
+ // jQuery( "#date_news_from" ).datepicker();   
+ //jQuery( "#date_news_to" ).datepicker();   
+    
+     jQuery( "#date_news_from" ).datepicker(
+         {
+      dateFormat: 'yy-mm-dd', 
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1998:2030"
+  });   
+ jQuery( "#date_news_to" ).datepicker(
+         {
+      dateFormat: 'yy-mm-dd', 
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1998:2030"
+  });   
+    
+   
+ 
+    
+    jQuery( "#date_news_fromtick" ).datepicker(
+         {
+      dateFormat: 'dd.mm.yy', 
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1998:2030"
+  });   
+ jQuery( "#date_news_totick" ).datepicker(
+         {
+      dateFormat: 'dd.mm.yy', 
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1998:2030"
+  });   
+     
+    
+    
+    
+    
+
+jQuery('.infrontprint').click(function(){
+    
+    window.print();
+    
+    jQuery('#priform').removeClass('hidenn');
+    jQuery('.steps').removeClass('active');
+    jQuery('.step_line_page_1').addClass('active');
+    return false;
+})
+
+jQuery('#ddsd').chosen({
+		width: '100%',
+		no_results_text: 'Совпадений не найдено',
+		placeholder_text_single: 'Выберите страну'
+	});
+
+  jQuery('.elements-block-date').click(function(){
+       jQuery('.calendars, .ffn').addClass('active');
+       })
+       jQuery('.ffn, .closes, .reset').click(function(){
+       jQuery('.calendars, .ffn').removeClass('active');
+       });   
+          
+function vet() {
+    pet = jQuery('#ss1').val();
+    oper = jQuery('#ss2').val();
+    col = jQuery('#ss3').val();
+    country = jQuery('#ss4').val();
+    
+    date1 = jQuery('#vak').val();
+    date2 = jQuery('#vak11').val();
+    date3 = jQuery('#vak12').val();
+    
+    d_spl1 = date1.split('-');
+    d_spl2 = date2.split('-');
+    d_spl3 = date3.split('-');
+    tps = jQuery('.step_line_page_3 .select_modul_param_allp_one.active').attr('data-p');
+    
+    if (tps == 'in') { ut = 'Ввоз в Российскую Федерацию'; }
+    if (tps == 'out') { ut = 'Вывоз из Российской Федерации'; }
+    if (tps == 'inner') { ut = 'Перемещение по территории Российской Федерации'; }
+    
+    jQuery('#tt4').html(d_spl1[2]+'.'+d_spl1[1]+'.'+d_spl1[0]);
+    jQuery('#tt5').html(d_spl2[2]+'.'+d_spl2[1]+'.'+d_spl2[0]);
+    jQuery('#tt6').html(d_spl3[2]+'.'+d_spl3[1]+'.'+d_spl3[0]);
+    jQuery('#vlso').html(ut);
+    
+    
+    
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'vetpro', 'pet':pet, 'country':country, 'oper':oper, 'col':col, 'date2':date2, 'date1':date1, 'date3':date3
+        }, function(response){
+          jQuery('.totalig_id').html(response);
+          
+     }); 
+}  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      jQuery('.bb1, .bb3').click(function(){
+      jQuery('.step_line_page_1').removeClass('active');
+      jQuery('.step_line_page_2').addClass('active');
+      return false;
+  })
+  
+  
+  function validates() {
+      
+      
+      
+      
+      ddf = jQuery('#ddf option:selected').val();
+      dmf = jQuery('#dmf option:selected').val();
+      dyf = jQuery('#dyf option:selected').val();
+      
+      
+      ddf11 = jQuery('#ddf11 option:selected').val();
+      dmf11 = jQuery('#dmf11 option:selected').val();
+      dyf11 = jQuery('#dyf11 option:selected').val();
+      
+      ddf12 = jQuery('#ddf12 option:selected').val();
+      dmf12 = jQuery('#dmf12 option:selected').val();
+      dyf12 = jQuery('#dyf12 option:selected').val();
+      
+      
+      
+      jQuery('.select_modul_param select').each(function(){
+      err = 0;
+      ddf = jQuery('#ddf option:selected').val();
+      dmf = jQuery('#dmf option:selected').val();
+      dyf = jQuery('#dyf option:selected').val();
+      
+      
+      ddf11 = jQuery('#ddf11 option:selected').val();
+      dmf11 = jQuery('#dmf11 option:selected').val();
+      dyf11 = jQuery('#dyf11 option:selected').val();
+      
+      ddf12 = jQuery('#ddf12 option:selected').val();
+      dmf12 = jQuery('#dmf12 option:selected').val();
+      dyf12 = jQuery('#dyf12 option:selected').val();
+           
+      if (ddf == 0) { jQuery('#ddf').next('.errors').addClass('active');  err = 1; return false; }
+      if (dmf == 0) { jQuery('#dmf').next('.errors').addClass('active');  err = 1; return false; }
+      if (dyf == 0) { jQuery('#dyf').next('.errors').addClass('active');  err = 1; return false; }
+      
+      
+      if (ddf11 == 0) { jQuery('#ddf11').next('.errors').addClass('active');  err = 1; return false; }
+      if (dmf11 == 0) { jQuery('#dmf11').next('.errors').addClass('active');  err = 1; return false; }
+      if (dyf11 == 0) { jQuery('#dyf11').next('.errors').addClass('active');  err = 1; return false; }
+      
+      
+      if (ddf12 == 0) { jQuery('#ddf12').next('.errors').addClass('active');  err = 1; return false; }
+      if (dmf12 == 0) { jQuery('#dmf12').next('.errors').addClass('active');  err = 1; return false; }
+      if (dyf12 == 0) { jQuery('#dyf12').next('.errors').addClass('active');  err = 1; return false; }
+      
+      });
+      
+      
+      
+      if (err == 0 ) {
+          
+          
+          
+          pos1 = jQuery('#pos1').val();
+          pos2 = jQuery('#pos2').val();
+          pos3 = jQuery('#pos3').val();
+          
+          st1d = jQuery('#ddf').val();
+          st1m = jQuery('#dmf').val();
+          st1y = jQuery('#dyf').val();
+
+          
+          st2d = jQuery('#ddf11').val();
+          st2m = jQuery('#dmf11').val();
+          st2y = jQuery('#dyf11').val();
+          
+          st3d = jQuery('#ddf12').val();
+          st3m = jQuery('#dmf12').val();
+          st3y = jQuery('#dyf12').val();
+          
+          pos1 = st1y+'-'+st1m+'-'+st1d;
+          pos2 = st2y+'-'+st2m+'-'+st2d;
+          pos3 = st3y+'-'+st3m+'-'+st3d;
+          
+jQuery('#vak').val(pos1);
+jQuery('#vak11').val(pos2);
+jQuery('#vak12').val(pos3);
+fulldate = jQuery('#fulldate').val();
+dpos1 = new Date(pos1);          
+dpos2 = new Date(pos2);          
+dpos3 = new Date(pos3);          
+dfull = new Date(fulldate);                    
+
+if (dpos1 >= dfull ) {
+    jQuery('#erro1').removeClass('active');
+    var iot1 = 0;
+} else {
+    jQuery('#erro1').addClass('active');
+    var iot1 = 1;
+}
+          
+          
+if (dfull  >= dpos2 ) {
+    jQuery('#erro2').removeClass('active');
+    var iot2 = 0;
+} else {
+    jQuery('#erro2').addClass('active');
+    var iot2 = 1;
+}          
+if (dfull  >= dpos3 ) {
+    jQuery('#erro3').removeClass('active');
+    var iot3 = 0;
+} else {
+    jQuery('#erro3').addClass('active');
+    var iot3 = 1;
+}          
+          
+          
+          
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (iot1 == 0 && iot2 == 0 && iot3 == 0) {
+
+dp = jQuery('#vak').val(); 
+dp1 = jQuery('#vak11').val();
+dp2 = jQuery('#vak12').val();
+
+var date2 = new Date(dp);
+var date1 = new Date(dp1);
+var date3 = new Date(dp2);
+
+var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+var timeDiffnew = Math.abs(date2.getTime() - date3.getTime());
+var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+var diffDaysnew = Math.ceil(timeDiffnew / (1000 * 3600 * 24)); 
+ console.log(parseInt(diffDaysnew));
+if (parseInt(diffDays) > 365 ) {
+jQuery('.rederr.part1').addClass('active');
+}
+if (parseInt(diffDaysnew) < 20 ) {
+jQuery('.rederr.part2').addClass('active');
+}
+jQuery('.infrontfinal').addClass('active');
+}
+      }
+  }
+    
+jQuery(document).on('click', '.infrontfinal.active', function(){
+    
+jQuery('.step_line_page_6').removeClass('active');
+jQuery('.step_line_page_7').addClass('active');
+
+jQuery('#tt4').html(jQuery('#pos1').val());
+jQuery('#tt5').html(jQuery('#pos5').val());
+    vet(); 
+});
+
+   
+  jQuery('.inbakstart').click(function(){
+      jQuery('.steps').removeClass('active');
+      jQuery('.rederr').removeClass('active');
+      jQuery('.step_line_page_6').addClass('active');
+      return false;
+  });
+  jQuery('.select_modul_param select').change(function(){
+      jQuery('.errors').removeClass('active')
+  });
+  
+  
+  jQuery('.infrontfinal').click(function(){
+      if (jQuery('.step_line_page_3.steps .select_modul_param_allp_one.active').attr('data-p') == 'inner') {
+          jQuery('#smp').children('.ppr_all_one_titu').html('Тип операции:');
+          jQuery('#smp').children('.ppr_all_one_val').html('Перемещение по территории Российской Федерации');
+          
+          
+          jQuery('#coco').children('.ppr_all_one_titu').html('Дата самой ранней действующей вакцинации:');
+          jQuery('#coco').children('.ppr_all_one_val').html(jQuery('#vak11').val());
+          
+          
+          
+          
+      }
+      
+      if (jQuery('.step_line_page_3.steps .select_modul_param_allp_one.active').attr('data-p') == 'out') {
+          jQuery('#smp').children('.ppr_all_one_titu').html('Страна, куда вывозится животное');
+      }
+      
+      jQuery('#tt4').html(jQuery('#vak').val());
+      jQuery('#tt5').html(jQuery('#vak11').val());
+      
+      validates();
+   });
+    
+    
+    
+     
+  jQuery('.infront').click(function(){
+      
+      if (jQuery(this).parents('.steps').hasClass('step_line_page_1')) { 
+      jQuery(this).parents('.steps').removeClass('active');
+      jQuery(this).parents('.steps').next().addClass('active');
+      
+      }
+       if (jQuery(this).parents('.steps').hasClass('step_line_page_2')) {
+            apt = jQuery(this).parents('.steps').find('.select_modul_param_allp_one.active').attr('data-v');
+            apt1 = jQuery(this).parents('.steps').find('.select_modul_param_allp_one.active').attr('data-id');
+            jQuery('#ss1').val(apt1);
+            jQuery('#tt1').html(apt);
+             jQuery(this).parents('.steps').removeClass('active');
+      jQuery(this).parents('.steps').next().addClass('active');
+        }
+       
+        
+          if (jQuery(this).parents('.steps').hasClass('step_line_page_4')) {
+            apt = jQuery(this).parents('.steps').find('.select_modul_param_allp_one.active').text();
+            aptcol = jQuery(this).parents('.steps').find('.select_modul_param_allp_one.active').attr('data-col');
+            jQuery('#ss3').val(aptcol);
+            jQuery('#tt2').html(apt);
+            jQuery(this).parents('.steps').removeClass('active');
+            jQuery(this).parents('.steps').next().addClass('active');
+          
+            
+            
+            
+        }
+           if (jQuery(this).parents('.steps').hasClass('step_line_page_5')) {
+            apt = jQuery(this).parents('.steps').find('#ddsd option:selected').text();
+            apt1 = jQuery(this).parents('.steps').find('#ddsd option:selected').val();
+            jQuery('#ss4').val(apt1);
+            jQuery('#tt3').html(apt);
+              
+              jQuery(this).parents('.steps').removeClass('active');
+               jQuery(this).parents('.steps').next().addClass('active');
+        }
+        
+        if (jQuery(this).parents('.steps').hasClass('step_line_page_3')) {
+            
+              
+            aptmex = jQuery('.step_line_page_3').find('.select_modul_param_allp_one.active').attr('data-p');
+            if (aptmex == 'inner') {
+               jQuery(this).parents('.steps').removeClass('active');
+               jQuery('.step_line_page_6').addClass('active');
+                
+            } else {
+               
+               jQuery('#ss2').val(aptmex);
+               jQuery(this).parents('.steps').removeClass('active');
+               jQuery(this).parents('.steps').next().addClass('active');
+               
+            }
+            
+            
+            
+            
+            
+        }
+        
+      
+     
+      return false;
+  })
+      
+  jQuery('.inbak').click(function(){
+      jQuery(this).parents('.steps').removeClass('active');
+      jQuery(this).parents('.steps').prev().addClass('active');
+      return false;
+  })
+      
+    
+var dateToday = new Date();
+var dates = jQuery("#vak").datepicker({
+    defaultDate: "+1w",
+    minDate: dateToday,
+    
+});
+   
+var dates = jQuery("#vak11").datepicker({
+    defaultDate: "+1w",
+    maxDate: dateToday,
+    
+});
+var dates = jQuery("#vak12").datepicker({
+    defaultDate: "+1w",
+    maxDate: dateToday,
+    
+});
+ 
+    
+  
+    
+    
+jQuery('#ddsd').change(function(){
+            apt = jQuery('#ddsd option:selected').text();
+            apt1 = jQuery('#ddsd option:selected').val();
+            jQuery('#ss4').val(apt1);
+            jQuery('#tt3').html(apt);
+})
+
+    jQuery('.select_modul_param_allp_one').click(function(){
+    
+        if (jQuery(this).parents('.steps').hasClass('step_line_page_3')) {
+            
+            aptmex = jQuery(this).attr('data-p');
+            jQuery('#ss2').val(aptmex);
+             if (aptmex == 'in') {
+                jQuery('.step_line_page_5').find('.select_modul_param_titul').html('Выберите страну, откуда ввозится животное');
+                
+            }  
+            if (aptmex == 'out') {
+               jQuery('.step_line_page_5').find('.select_modul_param_titul').html('Выберите страну, куда вывозится животное');
+            }  
+            
+        }
+        
+        if (jQuery(this).parents('.steps').hasClass('step_line_page_2')) {
+            apt = jQuery(this).attr('data-v');
+            apt1 = jQuery(this).attr('data-id');
+            jQuery('#ss1').val(apt1);
+            jQuery('#tt1').html(apt);
+            
+        }
+        
+        if (jQuery(this).parents('.steps').hasClass('step_line_page_4')) {
+            apt = jQuery(this).text();
+            apt1 = jQuery(this).attr('data-col');
+            jQuery('#ss3').val(apt1);
+            jQuery('#tt2').html(apt);
+        }
+         
+        if (jQuery(this).parents('.steps').hasClass('step_line_page_6')) {
+            apt = jQuery(this).text();
+            jQuery('#ss5').val(apt);
+            jQuery('#tt5').html(apt);
+        }
+        
+        jQuery(this).parent('.select_modul_param_allp').find('.select_modul_param_allp_one').removeClass('active');
+        jQuery(this).addClass('active');
+    })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    jQuery(window).scroll(function(){
+
+		if(jQuery(window).scrollTop() > 70) {
+jQuery('#backtotop').attr('style', 'display: inline-block; opacity: 1;');
+			
+
+		} else {
+jQuery('#backtotop').attr('style', 'display: none; opacity: 1;');
+			
+
+		}
+
+	});
+    
+       jQuery.datepicker.regional['ru'] = {
+
+	closeText: 'Закрыть',
+	prevText: 'Предыдущий',
+	nextText: 'Следующий',
+	currentText: 'Сегодня',
+	monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+	monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+	dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+	dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+	dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+	weekHeader: 'Не',
+	dateFormat: 'yy-mm-dd',
+	firstDay: 1,
+	isRTL: false,
+	showMonthAfterYear: false,
+	yearSuffix: ''
+
+};
+
+jQuery.datepicker.setDefaults(jQuery.datepicker.regional['ru']);
+      
+    jQuery( "#do" ).datepicker({ dateFormat: 'dd-mm-yy', 
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1998:2030"
+    });
+  jQuery( "#tod" ).datepicker({ 
+      dateFormat: 'dd-mm-yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1998:2030"
+  });
+  jQuery( "#dfrom" ).datepicker();
+  jQuery( "#dto" ).datepicker();
+    
+    
+    if (document.location.href == 'https://en.fsvps.gov.ru/') {
+      jQuery('#fill').html('View more');  
+    }
+        jQuery('#vbl').click(function(){
+            var t = jQuery('#vbl option:selected').val();
+            if (t != 0 ) {
+                jQuery('#zax').attr('action', 'https://fsvps.gov.ru/analitika/?detail='+t);
+            }
+        });
+        
+        
+      jQuery('.p2').click(function(){
+            dstart = jQuery(this).attr('d-start');
+            dend = jQuery(this).attr('d-end');
+            jQuery('#dfrom').val(dstart);
+            jQuery('#dto').val(dend);
+            jQuery('.p2').removeClass('active');
+            jQuery(this).addClass('active');
+        });    
+        
+        
+        
+    jQuery('.ret a').click(function(){
+        at = jQuery(this).attr('href');
+        if (at == '#') {
+            if ( jQuery(this).next('.sub-menu').hasClass('active')) {
+                jQuery(this).next('.sub-menu').removeClass('active');
+            } else {
+                jQuery(this).next('.sub-menu').addClass('active');
+            }
+            
+            return false;
+        }
+    })
+    
+    jQuery('.tab_mod_selector_one').click(function(){
+        vk = jQuery(this).attr('data-vk');
+        jQuery('.tab_mod_selector_one, .panes_one ').removeClass('active');
+        jQuery(this).addClass('active');
+        jQuery('.panes_one[data-vk="'+vk+'"]').addClass('active');
+    })
+    
+      jQuery('.topnav li').click(function(){
+       jQuery(this).toggleClass('active');
+       })
+    
+     
+    
+  /* jQuery(".sas_slide").slick({
+        dots: false,
+        arrows: true,
+        infinite: false,
+        slidesToShow:3,
+        slidesToScroll: 1 ,
+   
+         responsive: [
+    {
+      breakpoint: 1440,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        
+      }
+    },
+    {
+      breakpoint: 1300,
+      settings: {
+       slidesToShow: 3,
+        slidesToScroll: 1,
+       
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        dots: false,
+        arrows: false,  
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    
+        ]
+        
+        
+      });  
+  */  
+    jQuery('.top-menu-pop').click(function(){
+        jQuery('#menu-pop').addClass('active');
+    })
+    
+    jQuery('.menu-pop-close').click(function(){
+        jQuery('#menu-pop').removeClass('active');
+    })
+
+ jQuery('.expandable-title').click(function(){
+        jQuery('.expandable-section').removeClass('open');
+        if (jQuery(this).hasClass('open')) {
+        jQuery(this).parent().removeClass('open');
+        jQuery(this).removeClass('open');    
+        } else {
+        jQuery(this).parent().addClass('open');
+        jQuery(this).addClass('open');
+        
+        jQuery('.expandable-title-new').removeClass('open');
+        }
+    })
+    
+ jQuery('.expandable-title-new').click(function(){
+       
+             //jQuery('.expandable-ser').removeClass('open');
+       
+       if (jQuery(this).hasClass('open')) {
+           
+        jQuery(this).parent().removeClass('open');
+        jQuery(this).removeClass('open');    
+        
+        } else {
+        
+         jQuery(this).parent().addClass('open');
+         jQuery(this).addClass('open');
+        }
+    })    
+var fr = jQuery(window).width();
+        if (fr > 1000) {
+        jQuery(document).mouseup( function(e){ // событие клика по веб-документу
+		var div = jQuery( ".sub-menu" ); // тут указываем ID элемента
+		if ( !div.is(e.target) // если клик был не по нашему блоку
+		    && div.has(e.target).length === 0 ) { // и не по его дочерним элементам
+			jQuery( ".sub-menu" ).removeClass('active');
+		}
+	});
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+         jQuery('#edit-field-npa-class-parents-all-ul').change(function(){
+             npa = jQuery('#edit-field-npa-class-parents-all-ul').val();
+              jQuery.post('/wp-admin/admin-ajax.php', {'action':'npa_load', 'npa':npa}, function(response){
+                 jQuery('#select_np').html(response);
+                 }); 
+            
+            
+        });  
+    
+  
+    
+    
+    
+    
+    /*Секция вынос*/
+    
+    
+    
+    
+    
+    
+    jQuery('.page_hidd a').click(function(){
+    if (jQuery(this).hasClass('active')) {
+        jQuery(this).removeClass('active');
+        jQuery(this).text('Скрыть карту');
+        jQuery('.page_map').removeClass('hidden');
+    } else {
+        jQuery(this).addClass('active');
+        jQuery(this).text('Показать карту');
+        jQuery('.page_map').addClass('hidden');
+    }
+    return false;
+})
+
+jQuery('#select_inner').chosen();
+ 
+jQuery('.navnewitem a').click(function(){
+    at = jQuery(this).attr('href');
+    jQuery('.navnewitem a').removeClass('active');
+    jQuery('.tab-pane1').removeClass('showsactive');
+    jQuery('.tab-pane1').addClass('nones');
+    jQuery('.npp'+at).removeClass('nones');
+    jQuery('.npp'+at).addClass('showsactive');
+    
+    jQuery(this).addClass('active');
+     return false;
+})
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    jQuery('#selectone').change(function(){
+    alp = jQuery(this).val();
+    
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'selectupr', 'alp':alp }, function(response){
+          jQuery('#select_inner').html(response);
+          jQuery('#select_inner').val('').trigger('chosen:updated');
+           
+     }); 
+    
+})
+
+jQuery('#selectman').change(function(){
+    alp = jQuery(this).val();
+        jQuery.post('/wp-admin/admin-ajax.php', {'action':'selectman', 'alp':alp }, function(response){
+          console.log(response);
+          jQuery('#select_inner').html(response);
+          jQuery('#select_inner').val('').trigger('chosen:updated');
+           
+     }); 
+    
+})
+
+
+
+
+jQuery('#selectoneone').change(function(){
+    
+    alp = jQuery(this).val();
+    if (alp == '') {
+        alp = jQuery('#selectoneone').attr('data-z');
+    }
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'selectinner', 'alp':alp }, function(response){
+          jQuery('#select_inner').html(response);
+           jQuery('#select_inner').val('').trigger('chosen:updated');
+     }); 
+    
+})
+    
+   
+   
+jQuery('.step_search_select_one').click(function(){
+   var art = jQuery(this).attr('data-p');
+   jQuery('.step_search_select_one, .step_search_pane_one.start').removeClass('active');
+   //jQuery('#edit-field-npa-type option[value=0], #edit-field-npa-accepted-by option[value=0],  #edit-field-npa-class-parents-all-ul option[value=0], #edit-field-npa-class-parents-all option[value=0]').prop('selected', true);
+   jQuery(this).addClass('active');
+   if (art == 'npa-te') {
+       jQuery('.step_search_pane_one.start[data-p="npa-te"]').addClass('active');
+       jQuery('#step').val(1);
+   }
+   if (art == 'npa-type') {
+       jQuery('.step_search_pane_one.start[data-p="npa-type"]').addClass('active');
+       jQuery('#step').val(2);
+   }
+   if (art == 'npa-organ') {
+       jQuery('.step_search_pane_one.start[data-p="npa-organ"]').addClass('active');
+       jQuery('#step').val(3);
+   }
+   jQuery('.visibh').addClass('hidd');
+   jQuery('.hiom').addClass('active');
+   jQuery('.rv_form').removeClass('active');
+});
+jQuery('.list_one').click(function(){
+   var art = jQuery(this).attr('data-list');
+   var datap = jQuery(this).attr('data-p');
+ 
+   jQuery('.list_one').removeClass('active');
+   jQuery(this).addClass('active');
+   
+   
+   if (datap == 'npa-te') {
+       jQuery('#edit-field-npa-class-parents-all-ul option[value='+art+']').prop('selected', true);
+       jQuery('#views-exposed-form-npa-search-page').submit();
+       jQuery('#edit-field-npa-type option[value=0], #edit-field-npa-accepted-by option[value=0], #edit-field-npa-class-parents-all option[value=0],  #edit-field-npa-accepted-by option[value=0]').prop('selected', true);
+   }
+   if (datap == 'npa-te-pod') {
+       jQuery('#edit-field-npa-class-parents-all option[value='+art+']').prop('selected', true);
+       jQuery('#step').val(2);
+       jQuery('#views-exposed-form-npa-search-page').submit();
+   }
+   if (datap == 'npa-type') {
+        var art = jQuery(this).attr('data-z');
+        jQuery('#edit-field-npa-type option[data-npa='+art+']').prop('selected', true);
+      //  jQuery('#edit-field-npa-accepted-by option[value=0]').prop('selected', true);
+    //    jQuery('#edit-field-npa-accepted-by option[value=0], #edit-field-npa-class-parents-all option[value=0], #edit-field-npa-class-parents-all-ul option[value=0]').prop('selected', true);
+         
+          jQuery('#step').val(3);
+   jQuery('#views-exposed-form-npa-search-page').submit();
+    }
+   if (datap == 'npa-organ') {
+    var atz = jQuery(this).attr('data-z');
+    jQuery('#edit-field-npa-accepted-by option[data-org='+atz+']').prop('selected', true);
+    jQuery('#step').val(0);
+    jQuery('#views-exposed-form-npa-search-page').submit();
+    }
+    
+    if (datap == 'npa-org-sel') {
+       var atz = jQuery(this).attr('data-z');
+       jQuery('#edit-field-npa-accepted-by option[value="'+atz+'"]').prop('selected', true);
+       jQuery('#step').val(0);
+       jQuery('#views-exposed-form-npa-search-page').submit();
+    }
+    if (datap == 'npa-ty-sel') {
+       var atz = jQuery(this).attr('data-z');
+       jQuery('#edit-field-npa-type option[value="'+atz+'"]').prop('selected', true);
+       jQuery('#step').val(0);
+       jQuery('#views-exposed-form-npa-search-page').submit();
+    }
+    
+    
+   
+});
+   
+        
+
+jQuery('.rv_form').click(function(){
+    if (jQuery(this).hasClass('active')) {
+    jQuery('.visibh').addClass('hidd');
+    jQuery(this).removeClass('active');    
+    } else {
+        jQuery('.visibh').removeClass('hidd');
+    jQuery(this).addClass('active');
+    }
+    
+});
+
+
+
+
+
+
+jQuery('.slecom_titul_sub a ').click(function(){
+    poll = jQuery(this).attr('data-poll');
+    uid = jQuery(this).attr('data-u');
+    comm = jQuery(this).parents('.oprone_select').find('.iarea').val();
+    atr = jQuery('.oprone_select_test_sid.active').attr('data-c');
+    uris =  jQuery(this).attr('data-page');
+    jQuery(this).parents('.slecom').children('.thanks').addClass('active');
+    jQuery(this).parents('.slecom_titul_sub').prev('.orde').addClass('hidd');
+    jQuery(this).parents('.slecom_titul_sub').addClass('hidd');
+    
+    
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'polls', 'poll':poll, 'atr':atr, 'uid':uid, 'comm':comm, 'uris':uris }, function(response){
+          console.log(response);
+           
+    });
+    
+    
+    
+    return false;
+})
+
+
+jQuery('.sid_one.hid').click(function(){
+   jQuery('.auth_mod').addClass('active');
+});
+
+
+
+/*jQuery('.sid_one.opens').click(function(){
+    
+    atr = jQuery(this).attr('data-v');
+    poll = jQuery(this).attr('data-pol');
+    if (atr == 'bad') { te = 'Извините! Мы постараемся исправиться('; cla = 'bad'; }
+    if (atr == 'mid') { te = 'Понимаем что нам надо еще поработать дополнительно!'; cla = 'none'; }
+    if (atr == 'good') {te = 'Отлично! Мы рады что Вам все понравилось!'; cla = 'good';}
+    
+    
+            /*jQuery.post('/wp-admin/admin-ajax.php', {'action':'polls', 'poll':poll, 'atr':atr }, function(response){
+          
+           
+     }); 
+    
+    
+    jQuery(this).parents('.oprone_select_test_values').next('.oprone_select_test_sid').html(te);
+    jQuery(this).parents('.oprone_select_test_values').next('.oprone_select_test_sid').addClass('active');
+    jQuery(this).parents('.oprone_select').find('.slecom').addClass('active');
+    jQuery(this).parents('.oprone_select_test_values').next('.oprone_select_test_sid').attr('data-c', cla);
+    
+    
+    
+    
+})*/
+    
+    
+    
+    
+    
+    
+    jQuery(document).on('click', '.nosave', function(){
+    jQuery('.addexpert').removeClass('active');
+    return false; 
+});
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*Бло экспертов*/
+jQuery(document).on('click', '.nofile', function(){
+   jQuery(this).parents('.gallrepo').remove();
+   return false; 
+});
+jQuery(document).on('click', '#nosavesf', function(){
+   jQuery('#resultffull2').html('');
+   jQuery('.addprik, .saveme').removeClass('active');
+   return false; 
+});
+
+
+jQuery(document).on('click', '.clear', function(){
+   if (jQuery(this).hasClass('co1'))  {jQuery('#self1 option[value="0"]').prop('selected', true);}
+   if (jQuery(this).hasClass('co2'))  {jQuery('#self2 option[value="0"]').prop('selected', true);}
+   if (jQuery(this).hasClass('co3'))  {jQuery('#self3 option[value="0"]').prop('selected', true);}
+   jQuery('#filtersme').submit();
+   return false; 
+});
+
+
+
+
+jQuery(document).on('click', '.gone', function(){
+   jQuery(this).parents().remove();
+   return false; 
+});
+jQuery(document).on('click', '#logoafulledit', function(){
+   jQuery('#js-file1').click();
+   return false; 
+});
+jQuery(document).on('click', '#logoafulledit2', function(){
+   jQuery('#js-file2').click();
+   return false; 
+});
+
+jQuery('.infilesno').click(function(){
+    jQuery('.addprik').removeClass('active');
+    return false; 
+})
+
+
+jQuery('.svatt').change(function(){
+     
+     jQuery(this).parents('.novisform_after_scan').find('.commblock').addClass('active')
+});
+
+jQuery('#newexpert .telmask').on('change', function(){
+    jQuery('.errtel').removeClass('active');
+})
+jQuery('#valid1').on('change', function(){
+    jQuery('.err1').removeClass('active');
+})
+jQuery('#param10').on('change', function(){
+    jQuery('.err10').removeClass('active');
+})
+jQuery('#param11').on('change', function(){
+    jQuery('.err11').removeClass('active');
+})
+jQuery('#valid2').on('change', function(){
+    jQuery('.err2').removeClass('active');
+})
+jQuery('#valid3').on('change', function(){
+    jQuery('.err3').removeClass('active');
+})
+
+jQuery('#urobr').on('change', function(){
+    if (jQuery('#urobr').val() != 'Не выбрано') {
+    jQuery('.errobr').removeClass('active');
+    }
+}) 
+
+jQuery('.urobr').on('change', function(){
+    if (jQuery('.urobr').val() != 'Не выбрано') {
+    jQuery('.ed0').removeClass('active');
+    }
+}) 
+jQuery('.editor1').on('change', function(){
+     jQuery('.ed1').removeClass('active');
+   
+}) 
+
+
+
+jQuery('#svatt').on('change', function(){
+    if (jQuery('#svatt').val() != 'Не выбрано') {
+    jQuery('.errsvat').removeClass('active');
+    }
+}) 
+
+ jQuery("#js-file1").change(function(){
+	if (window.FormData === undefined) {
+		alert('В вашем браузере FormData не поддерживается')
+	} else {
+		var formData = new FormData();
+		jQuery.each(jQuery("#js-file1")[0].files,function(key, input){
+			formData.append('file[]', input);
+		});
+ 
+		jQuery.ajax({
+			type: "POST",
+			url: '/reestr/uploadmlt.php',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData,
+			dataType : 'json',
+			success: function(msg){
+				msg.forEach(function(msg) {
+					jQuery('#resultffull').append(msg);
+                                        jQuery('.errfile').removeClass('active');
+                                        
+ 				});
+			}
+		});
+	}
+});   
+
+
+
+ jQuery("#js-file2").change(function(){
+	if (window.FormData === undefined) {
+		alert('В вашем браузере FormData не поддерживается')
+	} else {
+		var formData = new FormData();
+		jQuery.each(jQuery("#js-file2")[0].files,function(key, input){
+			formData.append('file[]', input);
+		});
+ 
+		jQuery.ajax({
+			type: "POST",
+			url: '/reestr/uploadmlt.php',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData,
+			dataType : 'json',
+			success: function(msg){
+				msg.forEach(function(msg) {
+					jQuery('#resultffull2').append(msg);   jQuery('.saveme').addClass('active');
+                                        jQuery('.infilesno').addClass('hidd');
+ 				});
+			}
+		});
+	}
+});   
+
+
+
+ 
+  jQuery('#newexpert').on('submit', function(event) {
+    if ( validateForm() ) { // если есть ошибки возвращает true
+      event.preventDefault();
+    } else {
+   jQuery('#newexpert input[type="submit"]').remove();
+
+    }
+  });
+  
+  function validateForm() {
+    jQuery('.errexp').removeClass('active');
+    jQuery('#errdd').removeClass('active');
+    namevlid = jQuery('#valid1').val();
+    napvlid = jQuery('#valid2').val();
+    prikvlid = jQuery('#valid3').val();
+    date10vlid = jQuery('#param10').val();
+    date11vlid = jQuery('#param11').val();
+    vidvlid = jQuery('#videxp option:selected').val();
+    obllid = jQuery('#oblexp option:selected').val();
+    svat = jQuery('#svatt option:selected').val();
+    srokatt  = jQuery('#srokatt').val();
+    ingidfil = jQuery('.ingidfil').val();
+    obraz = jQuery('#urobr option:selected').val();
+    
+    
+    
+    
+    
+    var ername = false;
+    var ernap = false;
+    var erprik = false;
+    var date10 = false;
+    var date11 = false;
+    var errcom = false;
+    var errvid = false;
+    var errobl = false; 
+    var errsrok = false; 
+    var errsvat = false; 
+    var vid = false;
+    var errobr = false;
+    var  errfile = false;
+    var  errtel = false;
+    
+    
+    
+    
+    
+    if (srokatt == '') {
+     var   errsrok = true; jQuery('.errsrok').addClass('active');
+    }
+    
+    
+    if (namevlid == '') {
+     var   ername = true; jQuery('.err1').addClass('active');
+    }
+    if (napvlid == '') {
+      var  ernap = true; jQuery('.err2').addClass('active');
+    }
+    
+     if (!ingidfil || ingidfil == '') {
+      var  errfile = true; jQuery('.errfile').addClass('active');
+    }
+    
+    
+    
+    if (prikvlid == '') {
+      var  erprik = true; jQuery('.err3').addClass('active');
+    }
+    if (date10vlid == '') {
+       var  date10 = true; jQuery('.err10').addClass('active');
+    }
+    if (date11vlid == '') {
+        var date11 = true; jQuery('.err11').addClass('active');
+    }
+    /*if (vidvlid == 'Не выбрано') {
+        var vid = true; jQuery('.errvid').addClass('active');
+    }
+    if (obllid == 'Не выбрано') {
+        var errobl = true; jQuery('.errobl').addClass('active');
+    }*/
+    if (svat == 'Не выбрано') {
+        var errsvat = true; jQuery('.errsvat').addClass('active');
+    }
+    if (obraz == 'Не выбрано') {
+        var errobr = true; jQuery('.errobr').addClass('active');
+    }
+    
+    
+    jQuery('#newexpert .telmask').each(function(){
+        var usp = jQuery(this).val();
+         if (usp == '')  {
+            var errtel = true;jQuery('.errtel').addClass('active');
+            
+        }
+    })
+    
+    
+    
+  spldate10vlid = date10vlid.split('.');
+spldate11vlid = date11vlid.split('.');
+
+ded10 = spldate10vlid[2] + '-' + spldate10vlid[1] + '-' + spldate10vlid[0];
+ded11 = spldate11vlid[2] + '-' + spldate11vlid[1] + '-' + spldate11vlid[0];
+
+var date1 = new Date(ded10);
+var date2 = new Date(ded11);
+
+if (spldate10vlid != '' && spldate11vlid != '') {
+if (date1 < date2) {
+    console.log('date1 меньше date2');
+} else if (date1 > date2) {
+    ht = 'Дата окончания аттестации не может быть меньше даты начала';
+    console.log('date1 больше date2');
+    jQuery('#errdd').html(ht);
+    jQuery('#errdd').addClass('active');
+    var errcom = true;
+} else {
+    console.log('date1 и date2 равны');
+    ht = 'Дата окончания аттестации не может быть равна дате начала';
+    jQuery('#errdd').html(ht);
+    jQuery('#errdd').addClass('active');
+    var errcom = true;
+}
+}      
+    
+    
+    
+    
+    
+    
+    //alert(errfile + '=' + ername + '=' + ernap + '=' + erprik + '=' + date10 + '=' + date11 + '=' + errcom + '=' + errvid + '=' + errobl + '=' + errsvat  + '=' + vid + '=' + errobr );
+    
+    
+    
+  /*   
+    var reg     = /^\w+([\.-]?\w+)*@(((([a-z0-9]{2,})|([a-z0-9][-][a-z0-9]+))[\.][a-z0-9])|([a-z0-9]+[-]?))+[a-z0-9]+\.([a-z]{2}|(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum))$/i;
+    var el_e    = jQuery("#email");
+    var v_email = el_e.val()?false:true;
+  
+     
+    
+    */
+     return ( ername || ernap || erprik || date10 || date11 || errfile || errcom || errobl || errsrok || errsvat || errobr || errtel);
+  }
+   
+ 
+
+
+
+
+
+
+
+
+
+ jQuery('.vlids').on('submit', function(event) {
+    exp = jQuery(this).attr('id');
+    if ( validateOne(exp) ) { // если есть ошибки возвращает true
+      event.preventDefault();
+    }
+  });
+  
+  function validateOne(exp) {
+    
+    var exp = exp;
+    jQuery('.editerror').removeClass('active');
+    
+    expertform = jQuery('#'+exp);
+    jQuery('#'+exp).find('.comdateerr').removeClass('active');
+    editor0 = jQuery('#'+exp).find('.editor0').val();
+    editor1 = jQuery('#'+exp).find('.editor1').val();
+    editor2 = jQuery('#'+exp).find('.editor2').val();
+    editor3 = jQuery('#'+exp).find('.editor3').val();
+    editor6 = jQuery('#'+exp).find('.editor6').val();
+    editor7 = jQuery('#'+exp).find('.editor7').val();
+    edfio = jQuery('#'+exp).find('.eddnames').val();
+     
+    vidvlid = jQuery('#videxp option:selected').val();
+    
+    var ered0 = false;
+    var ered1 = false;
+    var ered2 = false;
+    var ered3 = false;
+    var ered6 = false;
+    var ered7 = false;
+    var errcom = false;
+    var errtel = false;
+    var errfio = false;
+    
+    
+    
+    if (editor0 == 'Выбрать') {
+     var   ered0 = true; jQuery('.ed0').addClass('active');
+    }
+    if (edfio == '') {
+     var   errfio = true; jQuery('.edff').addClass('active');
+    }
+    
+    
+    
+    
+    if (editor1 == '') {
+     var   ered1 = true; jQuery('.ed1').addClass('active');
+    }
+    if (editor2 == '') {
+     var   ered2 = true; jQuery('.ed2').addClass('active');
+    }
+    if (editor3 == '') {
+     var   ered3 = true; jQuery('.ed3').addClass('active');
+    }
+    if (editor6 == '') {
+     var   ered6 = true; jQuery('.ed6').addClass('active');
+    }
+    if (editor7 == '') {
+     var   ered7 = true; jQuery('.ed7').addClass('active');
+    }
+   
+spleditor6 = editor6.split('.');
+spleditor7 = editor7.split('.');
+
+ded6 = spleditor6[2] + '-' + spleditor6[1] + '-' + spleditor6[0];
+ded7 = spleditor7[2] + '-' + spleditor7[1] + '-' + spleditor7[0];
+
+var date1 = new Date(ded6);
+var date2 = new Date(ded7);
+
+if (editor7 != '' && editor6 != '') {
+if (date1 < date2) {
+    console.log('date1 меньше date2');
+} else if (date1 > date2) {
+    ht = 'Дата окончания аттестации не может быть меньше даты начала';
+    console.log('date1 больше date2');
+    jQuery('#'+exp).find('.comdateerr').html(ht);
+    jQuery('#'+exp).find('.comdateerr').addClass('active');
+    var errcom = true;
+} else {
+    console.log('date1 и date2 равны');
+    ht = 'Дата окончания аттестации не может быть равна дате начала';
+    jQuery('#'+exp).find('.comdateerr').html(ht);
+    jQuery('#'+exp).find('.comdateerr').addClass('active');
+    var errcom = true;
+}
+}    
+      
+     
+     return ( ered1 ||   ered2 || ered3 || ered6  || ered7 || ered0 || errcom || errfio);
+  }
+
+
+
+
+
+
+
+
+
+
+
+jQuery('.vidall').click(function(){
+    if (jQuery(this).hasClass('active')) {
+        jQuery(this).parents('.all_p').next('.infos_hidd').removeClass('active');
+        jQuery(this).text('Показать полные данные');
+        jQuery(this).removeClass('active');
+    } else {
+        jQuery(this).parents('.all_p').next('.infos_hidd').addClass('active');
+        jQuery(this).text('Свернуть');
+        jQuery(this).addClass('active');
+    }
+    
+    return false;
+})
+jQuery('.edilist').click(function(){
+        jQuery(this).parents('.views-oneexpert').find('.infos_hidd').removeClass('active');
+        jQuery(this).parents('.views-oneexpert').find('.vidall').removeClass('active');
+        jQuery(this).parents('.views-oneexpert').find('.vidall').text('Показать полные данные');
+        jQuery(this).parents('.views-oneexpert').find('.novisform').addClass('active');
+        jQuery(this).parents('.views-oneexpert').find('.vidall').addClass('hidd');
+        jQuery(this).parents('.views-oneexpert').children('.parab').each(function(){
+        jQuery(this).removeAttr('readonly');
+        })
+        
+    return false;
+})
+jQuery('.dellist').click(function(){
+        datau = jQuery(this).attr('data-u');
+        jQuery('.deleteexp').addClass('active');
+        jQuery('.dellthis').attr('data-u', datau);
+    return false;
+})
+
+
+jQuery('.inone').click(function(){
+    jQuery(this).parents('.views-oneexpert').find('.novisform').removeClass('active');
+    jQuery(this).parents('.views-oneexpert').find('.vidall').removeClass('hidd');
+    return false;
+})
+
+ 
+
+
+jQuery('.inlistpti').click(function(){
+        itis = jQuery(this).attr('data-id');
+        jQuery('#savesf').attr('data-e',itis );
+        jQuery('.addprik').addClass('active');
+        jQuery('.infilesno').removeClass('hidd');
+        
+    return false;
+})
+
+jQuery('.dellthisno').click(function(){
+        
+        jQuery('.deleteexp').removeClass('active');
+        
+    return false;
+})
+
+
+jQuery(document).on('click', '.dellines', function(){
+    jQuery(this).parents('.inputblock_li').remove();
+})
+
+
+
+jQuery('.telmask').mask('+7 (999) 999-99-99');
+
+
+jQuery('.add_phn').click(function(){
+    htm = '<div class="inputblock_li"><input type="text"  class="parab telmask" name="phone[]" value=""/><span class="dellines">-</span></div>';
+    jQuery(this).parents('.lineexp').find('.inputblock').append(htm);
+    jQuery(this).parents('.lineexp').find('.telmask').mask('+7 (999) 999-99-99');
+
+    return false;
+})
+jQuery('.add_mail').click(function(){
+    htm = '<div class="inputblock_li"><input type="text"  class="parab emask" name="email[]"  value=""/><span class="dellines">-</span></div>';
+    jQuery(this).parents('.lineexp').find('.inputblock').append(htm);
+    jQuery(this).parents('.lineexp').find('.emask').inputmask('email');
+
+    return false;
+})
+
+jQuery('.dellthis').click(function(){
+     atr = jQuery(this).attr('data-u');
+     comms = jQuery('#comms').val();
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'delexp', 'atr':atr , 'comms':comms }, function(response){
+         document.location.href="";
+    });
+    return false;
+})
+
+
+
+jQuery('.newexp').click(function(){
+    jQuery('.addexpert').addClass('active');   
+    return false;
+})
+
+
+jQuery('#changetu').chosen({
+                width: '100%',
+		 
+});
+
+jQuery('.getu').chosen({
+                width: '100%',
+		 
+});
+jQuery('.urobr').chosen({
+                width: '100%',
+		 
+});
+jQuery('.fi5').chosen({
+                width: '100%' 
+		 
+});
+jQuery('#fi5').chosen({
+                width: '100%' 
+		 
+});
+jQuery('.svatt').chosen({
+                width: '100%',
+		 
+});
+
+
+jQuery('#svatt').chosen({
+                width: '100%',
+		
+});
+jQuery('#urobr').chosen({
+                width: '100%',
+		
+});
+jQuery('#videxp').chosen({
+                width: '100%',
+		
+});
+jQuery('#oblexp').chosen({
+                width: '100%',
+		
+});
+
+
+jQuery('#self3').chosen({
+                width: '100%',
+		
+});
+jQuery('#self2').chosen({
+                width: '100%',
+		
+});
+jQuery('#self1').chosen({
+                width: '100%',
+		
+});
+    
+     
+
+jQuery('#videxp').change(function(){
+     
+     vd = jQuery('#videxp option:selected').attr('data-v');
+     jQuery('#oblexp option[value='+vd+']').prop('selected', true);
+     jQuery('#oblexp').trigger('chosen:updated');
+     jQuery('.errvid').removeClass('active')
+});
+
+jQuery('#oblexp').change(function(){
+     vd = jQuery('#oblexp option:selected').val();
+      jQuery.post('/wp-admin/admin-ajax.php', {'action':'oblaj', 'obl':vd }, function(response){
+          jQuery('#loadvid').html(response);
+          jQuery('#param1').val('');
+          jQuery('#videxp').chosen({
+                width: '100%',
+		
+});
+    }); 
+});
+
+
+
+
+
+           //  jQuery('#select_inner').val('').trigger('chosen:updated');
+
+
+
+/*jQuery('.blosk_list a').click(function(){
+    idk = jQuery(this).attr('data-u');
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'signpdf', 'idk':idk }, function(response){
+          alert('o');
+    });
+    return false;
+})*/
+
+    jQuery(".emask").inputmask("email");
+
+jQuery('.blosk_list a').click(function(){
+    idk = jQuery(this).attr('data-u');
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'gensigpdf', 'idk':idk }, function(response){
+          jQuery('#iar'+idk).addClass('active');
+          jQuery('#iar'+idk).children('a').attr('href', 'https://fsvps.gov.ru/reestr/' + response);
+          
+    });
+    return false;
+})
+
+
+jQuery('#savesf').click(function(){
+   idk = jQuery(this).attr('data-e');
+   prich = jQuery(this).parents('.closes_inner').find('textarea').val();
+   savesf = jQuery(this).parent('.saveme').prev('#resultffull2').find('.ingidfil').val();
+   var err = 0;
+   var errf = 0;
+   if (prich == '') {
+       var err = 1; jQuery('.errpri').addClass('active');
+   }
+   
+   if (err == 0 ) {
+   jQuery.post('/wp-admin/admin-ajax.php', {'action':'saveprikaz', 'idk':idk, 'savesf':savesf, 'prich':prich }, function(response){
+       document.location.href="";
+   });     
+   }
+    return false;
+})
+
+jQuery(document).on('change', '#videxp', function(){
+    rutval = jQuery('#videxp option:selected').val(); 
+     if (rutval == 'Экспертиза при осуществлении лицензионного контроля деятельности по производству лекарственных средств для ветеринарного применения') {var nnu = 1;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в сфере обращения лекарственных средств для ветеринарного применения') {var nnu = 2;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области обращения с животными в части соблюдения требований к содержанию и использованию животных в культурно-зрелищных целях') {var nnu = 3;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного ветеринарного контроля (надзора)') {var nnu = 4;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного земельного контроля (надзора) в отношении земель сельскохозяйственного назначения, оборот которых регулируется Федеральным законом от 24 июля 2002 г. N 101-ФЗ "Об обороте земель сельскохозяйственного назначения", и виноградопригодных земель') {var nnu = 5;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного карантинного фитосанитарного контроля (надзора)') {var nnu = 6;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного надзора в области семеноводства в отношении семян сельскохозяйственных растений') {var nnu = 7;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области безопасного обращения с пестицидами и агрохимикатами') {var nnu = 8;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области обеспечения качества и безопасности зерна и продуктов переработки зерна') {var nnu = 9;}
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'currnum', 'o': 1 }, function(response){
+           var ye = jQuery('#ye').val();
+         var yt = jQuery('#param10').val();
+         if (yt != '' ) {
+         spl = yt.split('.');
+          var st = nnu+'-'+spl[2] + '-' + response;
+         jQuery('#param1').val(st);
+         }
+         
+     });
+     
+  });
+  
+  
+  
+   jQuery(document).on('change', '#param10', function(){
+     rutval = jQuery('#videxp option:selected').val(); 
+     if (rutval == 'Экспертиза при осуществлении лицензионного контроля деятельности по производству лекарственных средств для ветеринарного применения') {var nnu = 1;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в сфере обращения лекарственных средств для ветеринарного применения') {var nnu = 2;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области обращения с животными в части соблюдения требований к содержанию и использованию животных в культурно-зрелищных целях') {var nnu = 3;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного ветеринарного контроля (надзора)') {var nnu = 4;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного земельного контроля (надзора) в отношении земель сельскохозяйственного назначения, оборот которых регулируется Федеральным законом от 24 июля 2002 г. N 101-ФЗ "Об обороте земель сельскохозяйственного назначения", и виноградопригодных земель') {var nnu = 5;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного карантинного фитосанитарного контроля (надзора)') {var nnu = 6;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного надзора в области семеноводства в отношении семян сельскохозяйственных растений') {var nnu = 7;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области безопасного обращения с пестицидами и агрохимикатами') {var nnu = 8;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области обеспечения качества и безопасности зерна и продуктов переработки зерна') {var nnu = 9;}
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'currnum', 'o': 1 }, function(response){
+         
+         var ye = jQuery('#ye').val();
+         var yt = jQuery('#param10').val();
+         if (yt != '' && jQuery('#videxp').val() != 'Не выбрано') {
+         spl = yt.split('.');
+         
+         var st = nnu+'-'+spl[2] + '-' + response;
+         jQuery('#param1').val(st);
+         }
+         
+     });
+     
+  });
+  
+  
+  
+  
+/* jQuery('#videxp').change(function(){
+     rutval = jQuery('#videxp option:selected').val(); 
+     if (rutval == 'Экспертиза при осуществлении лицензионного контроля деятельности по производству лекарственных средств для ветеринарного применения.') {var nnu = 1;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в сфере обращения лекарственных средств для ветеринарного применения.') {var nnu = 2;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области обращения с животными в части соблюдения требований к содержанию и использованию животных в культурно-зрелищных целях.') {var nnu = 3;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного ветеринарного контроля (надзора).') {var nnu = 4;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного земельного контроля (надзора) в отношении земель сельскохозяйственного назначения, оборот которых регулируется Федеральным законом от 24 июля 2002 г. N 101-ФЗ "Об обороте земель сельскохозяйственного назначения", и виноградопригодных земель.') {var nnu = 5;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного карантинного фитосанитарного контроля (надзора).') {var nnu = 6;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного надзора в области семеноводства в отношении семян сельскохозяйственных растений.') {var nnu = 7;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области безопасного обращения с пестицидами и агрохимикатами.') {var nnu = 8;}
+     if (rutval == 'Экспертиза при осуществлении федерального государственного контроля (надзора) в области обеспечения качества и безопасности зерна и продуктов переработки зерна.') {var nnu = 9;}
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'currnum', 'o': 1 }, function(response){
+          currnum = response;
+         var ye = jQuery('#ye').val();
+         var st = nnu+'-'+ye + '-' + response;
+         jQuery('#param1').val(st);
+     });
+     
+     rut = jQuery('#videxp option:selected').attr('data-v'); 
+     jQuery('#oblexp [value="'+rut+'"]').click();
+   
+ }); */
+
+
+ jQuery('#changetu').change(function(){
+   rut = jQuery('#changetu option:selected').val(); 
+   jQuery('#param8').val(rut);
+});
+
+
+
+var curryear = new Date().getFullYear() ;
+var curryearnew = curryear + 10;
+         
+  jQuery( ".data10" ).datepicker({dateFormat: 'dd.mm.yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2015:" + curryearnew
+             //yearRange: curryear + ":" + curryearnew
+    });
+    jQuery( ".data11" ).datepicker({dateFormat: 'dd.mm.yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2015:" + curryearnew
+              //yearRange: curryear + ":" + curryearnew
+    });
+  jQuery( "#param10" ).datepicker({dateFormat: 'dd.mm.yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2015:" + curryearnew
+      //yearRange: curryear + ":" + curryearnew
+    });
+jQuery( "#param11" ).datepicker({dateFormat: 'dd.mm.yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "2015:" + curryearnew
+      //yearRange: curryear + ":" + curryearnew
+    });    
+
+    
+    jQuery('.verfivys').click(function(){
+    var exp = jQuery(this).attr('data-u');
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'verify', 'exp':exp }, function(response){
+       document.location.href="";
+   });     
+   return false;
+})
+    
+    
+    
+ 
+ 
+ 
+  jQuery('.ddls').click(function(){
+     var fls = jQuery(this).attr('data-f');
+     var atr = jQuery(this).attr('href');
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'download', 'fls':fls  }, function(response){
+         document.location.href= atr;
+    });
+    return false;
+})
+    
+ 
+    jQuery('.clickbydown a').click(function(){
+     var fls = jQuery('.pagepid').val();
+     
+     var href = this.href;
+     
+     if(/\.(pdf|xlsx|csv|docx|zip)$/i.test(href)) {
+        jQuery.post('/wp-admin/admin-ajax.php', {'action':'downloadpage', 'fls':fls  }, function(response){
+         document.location.href= href;
+     });
+     } else {
+         if (!href.indexOf("#") != -1) {
+           
+          } else {
+               document.location.href= href;
+          }
+     }
+     
+     
+ })
+ 
+ 
+ jQuery('#topcat').chosen({
+                width: '100%',
+		 
+});
+jQuery('.topcat').chosen({
+                width: '100%',
+		 
+});
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  /*Блок тикетов*/  
+    
+    
+  function valtick() {
+    
+    var ered0 = false;      
+    var ered1 = false;   
+    var ered2 = false;   
+    var ered3 = false; 
+    var ered11 = false; 
+    var ered11 = false; 
+    var rok = 1;
+    jQuery('#allticks .errticket').removeClass('active');  
+    
+    var editor0 = jQuery('#allticks .tickone').find('.tzrazd');
+    var editor1 = jQuery('#allticks .tickone').find('.tzr');
+    var editor2 = jQuery('#allticks .tickone').find('.adrpage');
+    var editor3 = tinyMCE.activeEditor.getContent();
+    var editor11 = jQuery('#allticks .tickone').find('.nmpage');
+        
+     if (editor0.val() == 0) { var   ered0 = true; editor0.next('.errticket').addClass('active'); } 
+    if (editor1.val() == 0) { var   ered1 = true; editor1.next('.errticket').addClass('active'); }
+    if (editor11.val() == 0) { var   ered11 = true; editor11.next('.errticket').addClass('active'); }
+    if (editor2.val() == '') { var   ered2 = true; editor2.next('.errticket').addClass('active'); }
+ //   if (editor3 != '') { var   ered3 = true; editor3.next('.errticket').addClass('active'); }
+    
+    
+     
+    return ( ered0 || ered1 || ered2 ||  ered11 );
+       
+     
+    
+  }
+
+jQuery('.nosave').click(function(){
+    jQuery('.nmz, .adrpage, .descpage, .descpagesr').val('');
+  //  jQuery('.resultffullme').html('');
+    jQuery('.tzrazd option[value=0], .tzr option[value=0]').prop('selected','selected');
+    jQuery('.ticketadd').removeClass('active');
+    return false;
+})
+   
+   
+   
+   jQuery(document).on('click','.inputsub',function(){
+   
+   if ( valtick() ) { // если есть ошибки возвращает true
+      event.preventDefault();
+    } else {
+      jQuery('.inputsub, .nosave').remove(); 
+      jQuery('.tickonehs').addClass('active'); 
+         var items = [];
+      var uid = jQuery('.uid').val();
+      jQuery("#newticket .tickone").each(function(){
+        var tzrazd = jQuery(this).find('.tzrazd').val();
+        var tzr = jQuery(this).find('.tzr').val();
+        var adrpage = jQuery(this).find('.adrpage').val();
+        var psr = jQuery(this).find('.psr').val();
+        var descpagesr = jQuery(this).find('.descpagesr').val();
+        var descpage = jQuery(this).find('#descpage').val();
+        var fullimg = '';
+        jQuery('.full').each(function(){
+            at = jQuery(this).val();
+            fullimg += at;
+        });
+        var descpage = jQuery(this).find('.descpage').val();
+        var nmz = jQuery(this).find('.nmz').val();
+        var editor3 = tinyMCE.activeEditor.getContent();
+       
+        
+        items.push({tzrazd: tzrazd, nmz: nmz, tzr: tzr, adrpage: adrpage, psr: psr, descpagesr: descpagesr, descpage: editor3, fullimg: fullimg});
+      });
+     data = JSON.stringify(items);
+     
+     jQuery.ajax({
+            url : '/wp-admin/admin-ajax.php',
+            type : 'POST',
+              data : {
+                action : 'ticket',
+                data : data,
+                uid : uid,
+            },
+            success : function( response ) {
+                //jQuery('.output').html(response);
+                        document.location.href="https://fsvps.gov.ru/zajavki-sapport/";
+            }
+        });
+    }
+   
+   
+     
+      return false;
+});      
+    
+    jQuery('.newticket').click(function(){
+    jQuery('.ticketadd').addClass('active');
+    return false;
+})
+jQuery('.nosavetick').click(function(){
+    jQuery('.ticketadd').removeClass('active');
+    return false;
+})
+    
+
+jQuery('.addrazd').click(function(){
+   
+    var hts = jQuery('#cleart').html();
+    jQuery('#allticks').append(hts);
+    numt();
+    
+    return false;
+})    
+  
+jQuery(document).on('click','.ticket_del a',function(){
+    jQuery(this).parents('.tickone').remove();
+    numt();
+    return false;
+});
+  
+  
+function numt() {
+    cou = 1;
+    jQuery('#allticks .tnum').each(function(){
+        jQuery(this).html(cou);
+        cou = cou + 1;
+    });
+}
+    
+    
+    
+ 
+    
+   jQuery(document).on('change','.psr',function(){
+       vals = jQuery(this).val();
+       if (vals == 'Срочная') {
+           jQuery('.ons').addClass('active');
+       } else {
+           jQuery('.ons').removeClass('active');
+       }
+   })
+   
+   
+   
+jQuery(document).on('click','.infilestick',function(){
+            //  jQuery('.resultffullme').html('');
+    jQuery(this).next('.jsfilesme').click();
+    jQuery(this).parents('.tickone').addClass('active');
+ return false;       
+})
+     
+jQuery(document).on('change','.tickone.active .jsfilesme',function(){
+ 
+	if (window.FormData === undefined) {
+		alert('В вашем браузере FormData не поддерживается')
+	} else {
+		var formData = new FormData();
+		jQuery.each(jQuery(".tickone.active .jsfilesme")[0].files,function(key, input){
+			formData.append('file[]', input);
+		});
+ 
+		jQuery.ajax({
+			type: "POST",
+			url: '/tick/uptick.php',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData,
+			dataType : 'json',
+			success: function(msg){
+                                        
+  					jQuery('.tickone.active .resultffullme').append(msg);
+                                        jQuery('.tickone').removeClass('active');
+                                        
+ 			}
+		});
+	}
+});      
+     
+     
+       jQuery('.oprt').click(function(){
+    uid = jQuery(this).attr('data-u');
+    comm = jQuery('#newopen').val();
+    
+    
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'newopen',  'uid':uid, 'comm':comm  }, function(response){
+            jQuery('.modareasline').remove();
+            jQuery('.okes').removeClass('hidd');
+    });
+    
+    
+    
+    return false;
+})
+jQuery('.comadd').click(function(){
+    var rt = jQuery(this).attr('data-p');
+    jQuery('.comviews').removeClass('active');
+    jQuery(this).addClass('active');
+    jQuery('.companeall_one').removeClass('active');
+    jQuery('.companeall_one[data-p="'+rt+'"]').addClass('active');
+    
+    return false;
+})
+
+
+jQuery('.comviews').click(function(){
+    var rt = jQuery(this).attr('data-p');
+    jQuery('.comadd').removeClass('active');
+    jQuery(this).addClass('active');
+    jQuery('.companeall_one').removeClass('active');
+    jQuery('.companeall_one[data-p="'+rt+'"]').addClass('active');
+    
+    return false;
+})
+jQuery('.slecom_titul_sub span ').click(function(){
+    poll = jQuery(this).attr('data-poll');
+    uid = jQuery(this).attr('data-u');
+    comm = jQuery('#commes').val();
+    atr = jQuery('.oprone_select_test_sid.active').attr('data-c');
+    uris =  jQuery(this).attr('data-page');
+    jQuery(this).parents('.slecom').children('.thanks').addClass('active');
+    jQuery(this).parents('.slecom_titul_sub').prev('.orde').addClass('hidd');
+    jQuery(this).parents('.slecom_titul_sub').addClass('hidd');
+    
+    
+    jQuery.post('/wp-admin/admin-ajax.php', {'action':'comms', 'poll':poll, 'atr':atr, 'uid':uid, 'comm':comm, 'uris':uris }, function(response){
+            
+    });
+    
+    
+    
+    return false;
+})
+
+      
+     jQuery( "#dnd" ).datepicker({dateFormat: 'dd.mm.yy',
+      changeMonth: true,
+      changeYear: true,
+     });  
+
+
+
+
+
+
+
+
+
+jQuery('.one_choose').click(function(){
+     var vals = jQuery(this).text();
+     jQuery(this).parent('.onechosse').find('.one_choose').removeClass('active');   
+     jQuery(this).addClass('active');   
+     jQuery(this).parents('.oprus_one').find('.stepval').val(vals); 
+     
+     return false;
+})
+
+jQuery('.one_choosewpol').click(function(){
+     var vals = jQuery(this).text();
+     jQuery('.optpaea').val('');
+     jQuery(this).parent('.onechossewpol').find('.one_choosewpol').removeClass('active');   
+     jQuery(this).addClass('active');   
+     jQuery(this).parents('.oprus_one').find('.stepval').val(vals); 
+     
+     return false;
+})
+
+
+jQuery('.optpaea').on('keyup', function(){
+     jQuery(this).parents('.quibody').find('.one_choosewpol').removeClass('active');   
+     var nval = jQuery(this).val();
+      jQuery(this).parents('.oprus_one').find('.stepval').val(nval); 
+})
+
+
+
+jQuery('.one_s').click(function(){
+     var vals = jQuery(this).text();   
+     jQuery(this).parent('.shkala').find('.one_s').removeClass('active');   
+     jQuery(this).addClass('active');   
+      jQuery(this).parents('.oprus_one').find('.stepval').val(vals);        
+     return false;
+})
+
+
+
+jQuery('.sendopr').click(function(){
+     var allvals = jQuery('.allval').val();   
+     var emails = jQuery('.ems').val();   
+     var opr = jQuery(this).attr('data-opr');
+     var idk = jQuery(this).attr('data-idk');
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'saveuseropros', 'allvals':allvals, 'emails':emails, 'opr':opr, 'idk':idk}, function(response){
+       jQuery('.resultsop').html('<h3>Спасибо что приняли участие в нашем опросе.</h3>');
+     });      
+     return false;
+})
+jQuery('.sft').click(function(){
+ 
+     var quiz = jQuery(this).attr('data-o');
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'genquiz', 'quiz':quiz }, function(response){
+      jQuery('.loads').removeClass('active');
+       jQuery('[data-o="'+quiz+'"]').prev('.loads').addClass('active');
+     });      
+     return false;
+})
+
+
+
+
+
+
+
+
+
+ 
+function allval() {
+    var all = '';
+    jQuery('.stepval').each(function(){
+        if (jQuery(this).val() != '') {
+        all += jQuery(this).val()+'@@';
+    } else {
+        all += 'Не указан ответ@@';
+    }
+    })
+    jQuery('.allval').val(all);
+} 
+ 
+ 
+jQuery('.multi_choose').click(function(){
+     jQuery(this).toggleClass('active');
+     var op = '';
+     jQuery('.multi_choose.active').each(function(){
+         op += jQuery(this).text()+'##';
+     })
+     jQuery(this).parents('.oprus_one').find('.stepval').val(op); 
+     return false;
+})
+
+jQuery('.onlytext').on('keyup', function(){
+     var nval = jQuery(this).val();
+      jQuery(this).parents('.oprus_one').find('.stepval').val(nval); 
+})
+
+jQuery('.next_op').click(function(){
+     var vals = jQuery(this).parents('.oprus_one').find('.stepval').val(); 
+     if (jQuery(this).parents('.oprus_one').find('.stepval').hasClass('requi')) {
+      if (vals != '') {
+        var n = jQuery(this).attr('data-n');
+        jQuery('.oprus_one').removeClass('active');   
+        jQuery('.oprus_one[data-o="'+n+'"]').addClass('active');   
+        allval();
+        } else {
+        jQuery(this).parents('.oprus_one').find('.err').addClass('active');
+        }   
+     } else {
+        var n = jQuery(this).attr('data-n');
+        jQuery('.oprus_one').removeClass('active');   
+        jQuery('.oprus_one[data-o="'+n+'"]').addClass('active');   
+        allval();  
+     }
+     
+     return false;
+})
+
+jQuery('.opsels').on('change', function(){
+     var nval = jQuery(this).val();
+     if ( nval == 0) {
+         jQuery(this).parents('.oprus_one').find('.stepval').val(''); 
+     } else {
+         jQuery(this).parents('.oprus_one').find('.stepval').val(nval); 
+     }
+     
+})
+
+
+jQuery('.prev_op').click(function(){
+     var n = jQuery(this).attr('data-p');
+     jQuery('.oprus_one').removeClass('active');   
+     jQuery('.oprus_one[data-o="'+n+'"]').addClass('active');   
+     allval();
+      jQuery('.err').removeClass('active');
+     return false;
+})
+
+
+
+        
+jQuery('.opsels').chosen({
+		width: '100%',
+		
+	});       
+
+
+
+
+
+   /*ВЕРСИИ И РЕВИЗИИ*/
+   
+   jQuery('.rev_hid a').click(function(){
+       if (jQuery(this).hasClass('active')) {
+           jQuery(this).parents('.rev_hid').prev('.sas_slide').find('.file_list.revis').addClass('hiddme');
+           jQuery(this).text('Показать ревизии файлов');
+           jQuery(this).removeClass('active');
+       } else {
+           jQuery(this).parents('.rev_hid').prev('.sas_slide').find('.file_list').removeClass('hiddme');
+           jQuery(this).text('Скрыть ревизии файлов');
+           jQuery(this).addClass('active');
+       }
+       return false;
+   })
+   
+   jQuery('.morefiles a').click(function(){
+           jQuery('.morest, .dhid, .alit').removeClass('hidd');
+            jQuery(this).remove();
+           
+       
+       return false;
+   })
+   
+      jQuery('.pagi_file_rev span').click(function(){
+       var at = jQuery(this).attr('data-p');
+       jQuery('.pagi_file_rev span, .redsas').removeClass('active');
+       jQuery(this).addClass('active');
+       jQuery('.redsas[dpa="'+at+'"]').addClass('active');
+       return false;
+   })
+    
+    jQuery('.yarone').click(function(){
+     jQuery(this).next('.panesblocks').toggleClass('active');   
+     return false;
+})
+
+   jQuery('.anonsblotexthiddmore span').click(function(){
+       
+       if (jQuery(this).hasClass('active')) {
+           jQuery(this).removeClass('active');
+           jQuery('.anonsblotexthidd').removeClass('active');
+           jQuery(this).text('Посмотреть');
+       } else {
+           
+           jQuery(this).addClass('active');
+           jQuery('.anonsblotexthidd').addClass('active');
+           jQuery(this).text('Скрыть');
+       }
+       return false;
+   })
+   
+
+jQuery('.sid_one.opens').click(function(){
+    
+    atr = jQuery(this).attr('data-v');
+    poll = jQuery(this).attr('data-pol');
+    uid = jQuery('.orp').val();
+    if (atr == 'bad') { te = 'Извините! Мы постараемся исправиться('; cla = 'bad'; }
+    if (atr == 'mid') { te = 'Понимаем что нам надо еще поработать дополнительно!'; cla = 'mid'; }
+    if (atr == 'good') {te = 'Отлично! Мы рады что Вам все понравилось!'; cla = 'good';}
+    
+    
+             jQuery.post('/wp-admin/admin-ajax.php', {'action':'pollsn', 'poll':poll, 'atr':atr, 'uid':uid }, function(response){
+          
+           
+     });  
+    
+    
+    jQuery(this).parents('.oprone_select_test_values').next('.oprone_select_test_sid').html('<div class="apolog">'+te+'</div>');
+    jQuery(this).parents('.oprone_select_test_values').next('.oprone_select_test_sid').addClass('active');
+    jQuery(this).parents('.oprone_select').find('.slecom').addClass('active');
+    jQuery(this).parents('.oprone_select_test_values').next('.oprone_select_test_sid').attr('data-c', cla);
+    
+    
+    
+    
+})
+
+
+jQuery('.vih').click(function(){
+    if (jQuery(this).hasClass('active')) {
+        jQuery(this).parents('.viewopen').find('.hiddanno').removeClass('active');
+    jQuery(this).html('Показать краткое содержимое');
+    jQuery(this).removeClass('active');
+    } else {
+        jQuery(this).parents('.viewopen').find('.hiddanno').addClass('active');
+    jQuery(this).html('Скрыть краткое содержимое');
+    jQuery(this).addClass('active');
+    }
+    
+})
+
+
+
+jQuery('.vba').click(function(){
+    jQuery('.seds').addClass('active');
+    jQuery(this).remove();
+    return false;
+})
+
+
+
+   
+    
+ 
+
+function validcap() {
+       var code = jQuery('#capl').val();
+      if (code != '') {
+      jQuery.post('/wp-admin/admin-ajax.php', {async: false, 'action':'validcap', 'cap':code  }, function(response){
+           if (response ==  0) {
+                succeed = 1;
+          } else {
+              succeed = 0 ;
+          }
+         
+     });
+ } else {
+     succeed = 1;
+ }
+     return succeed;
+ }    
+    
+
+
+
+
+
+
+
+
+
+
+   
+    
+    
+    
+    jQuery('.zsend').click(function(){
+       if ( validatesed() ) { 
+          event.preventDefault();
+      } else {
+          
+     var code = jQuery('#capl').val();
+     jQuery.post('/wp-admin/admin-ajax.php', {async: false, 'action':'validcap', 'cap':code  }, function(response){
+           if (response ==  0) {
+               jQuery('.caps').addClass('active');
+          } else {
+               jQuery('.tickonehs').addClass('active');
+    jQuery('.zsend').remove();
+    zreg = jQuery('.zreg').val();
+    zfio = jQuery('.zfio').val();
+    zname = jQuery('.zname').val();
+    zmid = jQuery('.zmid').val();
+    zphone = jQuery('.zphone').val();
+    zto = jQuery('.zto').val();
+    zstatus = jQuery('.zstatus').val();
+    zorg = jQuery('.zorg').val();
+    zmess = jQuery('.zmess').val();
+      jQuery.post('/wp-admin/admin-ajax.php', {'action':'seds', 'zreg':zreg, 'zfio':zfio, 'zname':zname, 'zmid':zmid, 'zphone':zphone, 'zto':zto, 'zstatus':zstatus, 'zorg':zorg, 'zmess':zmess}, function(response){
+          
+                   document.location.href="/thnsed";
+      //jQuery('.tickonehs').removeClass('active'); 
+      //jQuery('.sedone').html('');
+      //jQuery('.sedone').html('<h3>Ваша заявка успешно отправлена</h3>');
+         
+    });
+          }      
+      });    
+  
+    
+      }
+     })
+    
+    
+    
+    
+     function validatesed() {
+    jQuery('.errsed').removeClass('active');
+     
+    zreg = jQuery('.zreg').val();
+    zfio = jQuery('.zfio').val();
+    zname = jQuery('.zname').val();
+    zmid = jQuery('.zmid').val();
+    zphone = jQuery('.zphone').val();
+    zkud = jQuery('.zto').val();
+    
+     zstatus = jQuery('.zstatus').val();
+     zmess = jQuery('.zmess').val();
+     
+    var er_zreg = false;
+    var er_zfio = false;
+    var er_zname = false;
+    var er_kud = false;
+    var er_zphone = false;
+    var er_zto = false;
+    var er_zstatus = false;
+    var er_zmess = false;
+    var er_cap = false;
+    var er_agr = false;
+    
+     if (zreg == 0) { var   er_zreg = true; jQuery('.pol1').addClass('active');}
+    if (zkud == 0) { var   er_kud = true; jQuery('.pol6').addClass('active');}
+    if (zfio == '') { var   er_zfio = true; jQuery('.pol2').addClass('active');}
+    if (zname == '') { var   er_zname = true; jQuery('.pol3').addClass('active');}
+    if (zphone == '') { var   er_zphone = true; jQuery('.pol5').addClass('active');}
+   if (zstatus == 0) { var   er_zstatus = true; jQuery('.pol7').addClass('active');}
+   
+    if (zmess == '') { var   er_zmess = true; jQuery('.pol9').addClass('active');}
+     if (!jQuery('.agreesed').hasClass('active')) { var   er_agr = true; jQuery('.agrs').addClass('active');}
+    
+     var code = jQuery('#capl').val();
+     jQuery.post('/wp-admin/admin-ajax.php', {async: false, 'action':'validcap', 'cap':code  }, function(response){
+           if (response ==  0) {
+                 er_cap = false;
+              jQuery('.caps').addClass('active');
+          } else {
+              jQuery('.caps').removeClass('active');    
+               var er_cap = true;
+          }
+     });
+    
+     
+    
+                return ( er_zreg || er_zfio || er_zname || er_kud || er_zphone ||  er_zstatus  || er_zmess  || er_cap || er_agr  );
+  }
+   
+    
+    
+
+
+
+
+    jQuery('.caplo img').click(function(){
+     jQuery.post('/wp-admin/admin-ajax.php', {'action':'chcap',  'uid':1   }, function(response){
+                   jQuery('.caplo img').attr('src' , 'data:image/jpg;base64,' + response);
+     
+     });
+    });
+    
+
+ 
+    
+
+jQuery('.upn').click(function(){
+   dmax  = parseInt(jQuery('#hidden').attr('data-max'));
+   dval  = parseInt(jQuery('#hidden').val());
+   if (dval == 1) {
+       dnex = dmax;
+   } else {
+       dnex = dval - 1;
+   }
+   jQuery('#licstcount').html(dnex);
+   jQuery('#hidden').val(dnex);
+   jQuery('html, body').animate({
+                    scrollTop: jQuery(".fime"+dnex).offset().top
+                }, 1000);
+});
+
+
+jQuery('.dwn').click(function(){
+   dmax  = parseInt(jQuery('#hidden').attr('data-max'));
+   dval  = parseInt(jQuery('#hidden').val());
+   if (dval == dmax) {
+       dnex = 1;
+   } else {
+       dnex = dval + 1;
+   }
+   jQuery('#licstcount').html(dnex);
+   jQuery('#hidden').val(dnex);
+   
+    jQuery('html, body').animate({
+                    scrollTop: jQuery(".fime"+dnex).offset().top
+                }, 1000);
+   
+   
+});
+
+
+
+})
+
+ 
