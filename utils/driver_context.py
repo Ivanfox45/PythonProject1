@@ -1,14 +1,17 @@
 # utils/driver_context.py
-import undetected_chromedriver as uc
-from contextlib import contextmanager
 import os
+from contextlib import contextmanager
+
+import undetected_chromedriver as uc
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 @contextmanager
 def create_driver(profile_name="default"):
     driver = None
     try:
         user_data_path = os.path.abspath("user_data")
-        profile_path = os.path.join(user_data_path, profile_name)
 
         options = uc.ChromeOptions()
         options.add_argument(f"--user-data-dir={user_data_path}")
@@ -16,7 +19,8 @@ def create_driver(profile_name="default"):
         options.add_argument("--no-first-run --no-default-browser-check")
         options.add_argument("--start-maximized")
 
-        driver = uc.Chrome(options=options)
+        service = Service(ChromeDriverManager().install())
+        driver = uc.Chrome(service=service, options=options)
         yield driver
     finally:
         if driver:

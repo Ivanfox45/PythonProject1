@@ -1,11 +1,11 @@
 # Автоматически сгенерировано
 
 from parsers.w_h_o__parser import WHOParser
-from parsers.outbreak_news__parser import OutbreakNewsParser
+# from parsers.outbreak_news__parser import OutbreakNewsParser  # inactive
 from parsers.w_h_o_weekly_record__parser import WHOWeeklyRecordParser
-from parsers.rospotreb__parser import RospotrebParser
+# from parsers.rospotreb__parser import RospotrebParser  # inactive
 from parsers.f_s_v_p_s__parser import FSVPSParser
-from parsers.m_c_x__parser import MCXParser
+# from parsers.m_c_x__parser import MCXParser  # inactive
 from parsers.pro_m_e_d__parser import ProMEDParser
 from parsers.e_c_d_c__parser import ECDCParser
 from parsers.s_e_a_r_o__parser import SEAROParser
@@ -18,7 +18,7 @@ from parsers.c_d_c__parser import CDCParser
 from parsers.e_c_d_c_atlas__parser import ECDCAtlasParser
 from parsers.e_i_o_s__parser import EIOSParser
 from parsers.g_o_a_r_n__parser import GOARNParser
-from parsers.c_i_s_i_d__parser import CISIDParser
+# from parsers.c_i_s_i_d__parser import CISIDParser  # inactive
 from parsers.e_w_a_r_s__parser import EWARSParser
 from parsers.c_i_d_r_a_p__parser import CIDRAPParser
 from parsers.health_map__parser import HealthMapParser
@@ -33,11 +33,11 @@ from parsers.melioidosis__parser import MelioidosisParser
 
 SITES = {
     "w_h_o_": WHOParser,
-    "outbreak_news_": OutbreakNewsParser,
+    # "outbreak_news_": OutbreakNewsParser,  # inactive
     "w_h_o_weekly_record_": WHOWeeklyRecordParser,
-    "rospotreb_": RospotrebParser,
+    # "rospotreb_": RospotrebParser,  # inactive
     "f_s_v_p_s_": FSVPSParser,
-    "m_c_x_": MCXParser,
+    # "m_c_x_": MCXParser,  # inactive
     "pro_m_e_d_": ProMEDParser,
     "e_c_d_c_": ECDCParser,
     "s_e_a_r_o_": SEAROParser,
@@ -50,7 +50,7 @@ SITES = {
     "e_c_d_c_atlas_": ECDCAtlasParser,
     "e_i_o_s_": EIOSParser,
     "g_o_a_r_n_": GOARNParser,
-    "c_i_s_i_d_": CISIDParser,
+    # "c_i_s_i_d_": CISIDParser,  # inactive
     "e_w_a_r_s_": EWARSParser,
     "c_i_d_r_a_p_": CIDRAPParser,
     "health_map_": HealthMapParser,
